@@ -7,12 +7,14 @@
 
 #import "MyContacts.h"
 #import <React/RCTLog.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @implementation MyContacts
 
 RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(getContacts)
 {
-    RCTLogInfo(@"Hello Contacts");
+    return [[ABAddressBook sharedAddressBook ] me];
 }
 @end
