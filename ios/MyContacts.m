@@ -1,14 +1,18 @@
-#import "MyContacts.h"
+//
+//  MyContacts.m
+//  
+//
+//  Created by Filipe Botti on 08/03/20.
+//
 
+#import "MyContacts.h"
+#import <React/RCTLog.h>
 
 @implementation MyContacts
 
-RCT_EXPORT_MODULE()
-
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_MODULE();
+RCT_EXPORT_METHOD(getContacts)
 {
-    // TODO: Implement some actually useful functionality
-    callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
+    RCTLogInfo(@"Hello Contacts");
 }
-
 @end
