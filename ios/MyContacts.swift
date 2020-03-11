@@ -32,6 +32,19 @@ class ContactManager: NSObject {
             let contacts: [CNContact] = retrieveContacts(from: store)
             let data = parseContactsToDict(contacts)
             resolve(data)
+        } else if authorizationStatus == .denied {
+            store.requestAccess(for: .contacts) { [weak self] didAuthorize,
+            error in
+                if didAuthorize {
+                    let contacts: [CNContact] = self!.retrieveContacts(from: store)
+                    let data = self!.parseContactsToDict(contacts)
+                    resolve(data)
+                } else {
+                    reject("UNAUTHORIZED", "User unauthorized your access", error)
+                }
+            }
+        } else {
+            reject("FAILED", "Failed when tried to retrieve contacts", NSError(domain: "CONTACT", code: 200, userInfo: nil))
         }
         
     }
