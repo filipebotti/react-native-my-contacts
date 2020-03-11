@@ -1,7 +1,7 @@
 {
   "name": "react-native-my-contacts",
   "title": "React Native My Contacts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple contacts reader library",
   "main": "index.js",
   "scripts": {
