@@ -43,7 +43,7 @@ public class MyContactsModule extends ReactContextBaseJavaModule {
                 if (result == "granted") {
                     promise.resolve(readContacts());
                 } else {
-                    promise.reject("UNAUTHORIZED");
+                    promise.reject("UNAUTHORIZED", "You are not authorized by the user");
                 }
             }
         };
@@ -51,14 +51,14 @@ public class MyContactsModule extends ReactContextBaseJavaModule {
         final Callback onPermissionDenied = new Callback() {
             @Override
             public void invoke(Object... args) {
-                promise.reject("UNAUTHORIZED");
+                promise.reject("UNAUTHORIZED", "You are not authorized by the user");
             }
         };
 
         Callback onPermissionCheckFailed = new Callback() {
             @Override
             public void invoke(Object... args) {
-                promise.reject("FAILED");
+                promise.reject("FAILED", "Error when tried to get contacts");
             }
         };
 
@@ -80,7 +80,7 @@ public class MyContactsModule extends ReactContextBaseJavaModule {
     }
 
 
-    public WritableArray readContacts() {
+    private WritableArray readContacts() {
         ContentResolver cr = this.reactContext.getApplicationContext().getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
