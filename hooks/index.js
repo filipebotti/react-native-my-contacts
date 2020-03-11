@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
 import { NativeModules } from 'react-native'
-import { ContactContext } from '../providers/contactProvider'
+import { ContactContext } from '../provider'
 
 export default () => {
   const [loading, setLoading] = useState(false)
